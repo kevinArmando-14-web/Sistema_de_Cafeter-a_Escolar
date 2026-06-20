@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Cafetería Escolar · Análisis del flujo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+<header class="encabezado">
+  <div class="encabezado__interior">
+    <div class="sello" aria-hidden="true">Pedido N.º 247</div>
+ 
+    <div class="encabezado__texto">
+      <h1>Sistema de Cafetería Escolar</h1>
+      <p class="subtitulo">Cómo viaja un pedido: de la entidad externa a la salida del sistema</p>
+      <button class="enlace-info" id="btnInfo" aria-expanded="false" aria-controls="panelInfo">
+        ¿Qué significa cada columna? <span aria-hidden="true">＋</span>
+      </button>
+    </div>
+ 
+    <button class="boton-simular" id="btnSimular" type="button">
+      <span class="boton-simular__icono" aria-hidden="true">▶</span>
+      Simular un pedido
+    </button>
+  </div>
+ 
+  <p class="panel-info" id="panelInfo" hidden>
+    Un diagrama de flujo de datos describe un sistema en cuatro piezas: las
+    <strong>entidades externas</strong> son quienes interactúan con él desde afuera;
+    las <strong>entradas</strong> son los datos que ingresan; los
+    <strong>procesos</strong> transforman esos datos; y las <strong>salidas</strong>
+    son los resultados que el sistema entrega. Pulsa «Simular un pedido» para ver
+    el recorrido completo, o toca cualquier elemento de las tarjetas para conocer
+    qué función cumple.
+  </p>
+</header>
+ 
+<div class="divisoria" role="presentation">
+  <span>✂</span>
+</div>
+ 
+<main class="contenedor">
+ 
+  <!-- Riel de flujo -->
+  <nav class="riel" aria-label="Etapas del flujo del pedido">
+    <ol class="riel__lista">
+      <li class="riel__estacion" data-etapa="1">
+        <span class="riel__punto">1</span>
+        <span class="riel__etiqueta">Entidades<br>externas</span>
+      </li>
+      <li class="riel__conector" aria-hidden="true"></li>
+      <li class="riel__estacion" data-etapa="2">
+        <span class="riel__punto">2</span>
+        <span class="riel__etiqueta">Entradas</span>
+      </li>
+      <li class="riel__conector" aria-hidden="true"></li>
+      <li class="riel__estacion" data-etapa="3">
+        <span class="riel__punto">3</span>
+        <span class="riel__etiqueta">Procesos</span>
+      </li>
+      <li class="riel__conector" aria-hidden="true"></li>
+      <li class="riel__estacion" data-etapa="4">
+        <span class="riel__punto">4</span>
+        <span class="riel__etiqueta">Salidas</span>
+      </li>
+    </ol>
+    <div class="riel__corredor" id="corredor" aria-hidden="true">🎫</div>
+  </nav>
+ 
+  <p class="narrador" id="narrador">
+    Pulsa <strong>«Simular un pedido»</strong> para ver la historia completa, paso a paso.
+  </p>
+ 
+  <!-- Tarjetas -->
+  <div class="grid-tarjetas">
+ 
+    <section class="tarjeta tarjeta--entidades" data-etapa="1">
+      <header class="tarjeta__cabecera">
+        <span class="tarjeta__icono" aria-hidden="true">👥</span>
+        <h2>Entidades externas</h2>
+      </header>
+      <p class="tarjeta__nota">Quién interactúa con el sistema desde afuera</p>
+      <ul class="lista-items">
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Estudiante</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Hace su pedido en caja y paga por su compra.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Cajero / Vendedor</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Recibe el pedido, cobra y lo envía hacia cocina.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Cocinero</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Prepara los alimentos según la orden recibida.</p>
+        </li>
+      </ul>
+    </section>
+ 
+    <section class="tarjeta tarjeta--entradas" data-etapa="2">
+      <header class="tarjeta__cabecera">
+        <span class="tarjeta__icono" aria-hidden="true">📥</span>
+        <h2>Entradas</h2>
+      </header>
+      <p class="tarjeta__nota">Datos que ingresan al sistema</p>
+      <ul class="lista-items">
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Solicitud de pedido</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Lo que el estudiante quiere comprar, indicado en caja.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Pago de la compra</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Efectivo o saldo que cubre el total del pedido.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Actualización de menú e inventario</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Cambios de precios, platillos o existencias que carga el administrador.</p>
+        </li>
+      </ul>
+    </section>
+ 
+    <section class="tarjeta tarjeta--procesos" data-etapa="3">
+      <header class="tarjeta__cabecera">
+        <span class="tarjeta__icono" aria-hidden="true">⚙️</span>
+        <h2>Procesos principales</h2>
+      </header>
+      <p class="tarjeta__nota">Lo que el sistema hace con esos datos</p>
+      <ul class="lista-items">
+        <li>
+          <button class="item" aria-expanded="false">
+            <span><span class="item__codigo">P1</span>Registrar pedido y cobrar</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">El sistema guarda el pedido y calcula el cobro al estudiante.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span><span class="item__codigo">P2</span>Generar orden de preparación</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Se envía el comprobante de cocina con lo que debe prepararse.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span><span class="item__codigo">P3</span>Actualizar inventario</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Se descuentan los insumos usados de las existencias disponibles.</p>
+        </li>
+      </ul>
+    </section>
+ 
+    <section class="tarjeta tarjeta--salidas" data-etapa="4">
+      <header class="tarjeta__cabecera">
+        <span class="tarjeta__icono" aria-hidden="true">📤</span>
+        <h2>Salidas</h2>
+      </header>
+      <p class="tarjeta__nota">Resultados que el sistema entrega</p>
+      <ul class="lista-items">
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Ticket o comprobante de compra</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Recibo que confirma el pago realizado por el estudiante.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Orden de comida entregada</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">El platillo terminado que recibe el estudiante en el mostrador.</p>
+        </li>
+        <li>
+          <button class="item" aria-expanded="false">
+            <span>Reporte de ventas diarias</span><span class="item__flecha" aria-hidden="true">›</span>
+          </button>
+          <p class="item__desc">Resumen para administración del total vendido en el día.</p>
+        </li>
+      </ul>
+    </section>
+ 
+  </div>
+</main>
+ 
+<footer class="pie">
+  <p>Diagrama interactivo de entidades, entradas, procesos y salidas — análisis de sistemas.</p>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
